@@ -1,0 +1,37 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "db:populate": "node --loader ts-node/esm ./server/populateDB.ts"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^0.5.6",
+    "@pinia/nuxt": "^0.5.4",
+    "@prisma/nuxt": "^0.0.35",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "nuxt": "^3.13.0",
+    "pg": "^8.12.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1",
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.5.6",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@prisma/client": "^5.19.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/pg": "^8.11.8",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
