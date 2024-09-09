@@ -13,7 +13,7 @@ datasource db {
 model items {
   id         String              @id @default(uuid())
   item_name  String
-  amount     Int                 @default(0)
+  amount     Int                 @default(1)
   categories itemsOnCategories[]
 }
 
