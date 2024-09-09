@@ -6,27 +6,31 @@ export default defineEventHandler({
   handler: async (event) => {
     const { category } = await readBody<IServerCategoryAction>(event);
 
-    const isExistingCategory = await prisma.categories.findFirst({
+    const existingCategory = await prisma.categories.findFirst({
       where: {
         category_name: category
       }
     });
 
-    if (!isExistingCategory) {
+    if (!existingCategory) {
       return createError({ statusCode: 400, message: 'Category not exist.' });
     }
 
-    const deletedCategory = await prisma.categories.delete({
+    await prisma.itemsOnCategories.deleteMany({
       where: {
-        category_name: isExistingCategory.category_name,
-        id: isExistingCategory.id
+        category_id: existingCategory.id
+      }
+    });
+
+    await prisma.categories.delete({
+      where: {
+        id: existingCategory.id
       }
     });
 
     return {
       statusCode: 200,
-      message: 'Category Deleted.',
-      data: deletedCategory
+      message: 'Category Deleted.'
     };
   }
 });
