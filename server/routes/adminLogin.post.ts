@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import type { IServerUserAuthAction } from '~/types';
 
 export default defineEventHandler({
-  onRequest: [],
   handler: async (event) => {
     const { username, password } = await readBody<IServerUserAuthAction>(event);
 
@@ -31,8 +30,7 @@ export default defineEventHandler({
     }
 
     const token = jwt.sign({ username }, jwtSecret, {
-      expiresIn: '1h',
-      algorithm: 'RS256'
+      expiresIn: '1h'
     });
 
     return { token };

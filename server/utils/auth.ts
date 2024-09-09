@@ -10,9 +10,7 @@ export default defineEventHandler((event) => {
   const jwtSecret = process.env.JWT_SECRET!;
 
   try {
-    const decoded = jwt.verify(token, jwtSecret, {
-      algorithms: ['RS256']
-    });
+    const decoded = jwt.verify(token, jwtSecret);
     event.context.user = decoded;
   } catch (err) {
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized' });
