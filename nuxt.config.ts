@@ -6,19 +6,17 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@prisma/nuxt',
     '@pinia/nuxt',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@nuxtjs/google-fonts'
   ],
   css: ['~/assets/css/tailwind.css'],
-  tailwindcss: {
-    config: {
-      theme: {
-        colors: {
-          meow: '#123123'
-        }
-      }
-    }
-  },
   prisma: {
     autoSetupPrisma: true
+  },
+  googleFonts: {
+    families: {
+      Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+    },
+    display: 'swap'
   }
 });
