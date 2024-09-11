@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@prisma/nuxt',
     '@pinia/nuxt',
     '@nuxt/eslint',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxt/icon'
   ],
   css: ['~/assets/css/tailwind.css'],
   prisma: {
@@ -18,5 +19,13 @@ export default defineNuxtConfig({
       Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900]
     },
     display: 'swap'
+  },
+  icon: {
+    serverBundle: {
+      collections: ['mdi', 'mingcute']
+    },
+    clientBundle: {
+      scan: true
+    }
   }
 });
