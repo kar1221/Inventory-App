@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex min-h-screen gap-4 bg-slate-50 p-4">
     <TheHeader />
     <slot />
   </div>
