@@ -1,12 +1,18 @@
 import type { IServerUserAuthAction } from '~/types';
 
 const useAuthStore = defineStore('auth', {
-  state: () => ({
-    token: sessionStorage.getItem('token')
-  }),
+  state: () => {
+    const token = useCookie('token');
+
+    return {
+      token: token.value,
+      isLoading: false,
+      isAuthenticated: !!token.value
+    };
+  },
   actions: {
     async login({ username, password }: IServerUserAuthAction) {
-      const { data } = await useFetch('/adminLogin', {
+      const { data, status } = await useFetch('/adminLogin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -17,14 +23,21 @@ const useAuthStore = defineStore('auth', {
         }
       });
 
+      computed(() => {
+        this.isLoading = status.value === 'pending';
+      });
+
       if (data.value && data.value.token) {
+        const token = useCookie('token');
+
         this.token = data.value.token;
-        sessionStorage.setItem('token', data.value.token);
+        token.value = data.value.token;
       }
     },
     logout() {
+      const token = useCookie('token');
       this.token = null;
-      sessionStorage.removeItem('token');
+      token.value = null;
     }
   }
 });
