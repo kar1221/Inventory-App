@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export default defineEventHandler((event) => {
-  const token = event.node.req.headers['authorization']?.split(' ')[1];
+  const token = event.node.req.headers['authorization']?.split(' ')[1]; // Expected input: authorization: Bearer [token]
 
   if (!token) {
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized' });
@@ -10,9 +10,8 @@ export default defineEventHandler((event) => {
   const jwtSecret = process.env.JWT_SECRET!;
 
   try {
-    const decoded = jwt.verify(token, jwtSecret);
-    event.context.user = decoded;
-  } catch (err) {
+    jwt.verify(token, jwtSecret);
+  } catch {
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized' });
   }
 });
