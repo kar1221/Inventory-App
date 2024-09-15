@@ -1,11 +1,7 @@
 <template>
-  <div></div>
+  <div>Hi</div>
 </template>
 
-<script lang="ts" setup>
-definePageMeta({
-  middleware: 'admin-auth'
-});
-</script>
+<script lang="ts" setup></script>
 
 <style></style>
