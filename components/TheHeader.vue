@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 flex min-w-60 flex-col items-center gap-4 font-primary"
+    class="sticky left-0 top-0 flex min-w-60 flex-col items-center gap-4 font-primary"
   >
     <div
       class="z-0 flex w-full flex-1 flex-col items-center rounded-lg bg-slate-900 p-2"
@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts" setup>
-import useAuthStore from '~/stores/auth';
+import useTokenStore from '~/stores/tokenStore';
 
-const auth = useAuthStore();
+const auth = useTokenStore();
 
 const links = [
   {
