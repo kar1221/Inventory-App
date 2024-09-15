@@ -13,7 +13,7 @@
     >
       Go back
     </button>
-    <p class="mt-8 text-slate-400">
+    <p class="mt-8 w-3/4 max-w-md text-slate-400">
       {{ error.statusCode }}: {{ error.message }}
     </p>
   </div>
