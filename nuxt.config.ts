@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/icon'
   ],
-  css: ['~/assets/css/tailwind.css'],
   prisma: {
     autoSetupPrisma: true
   },
@@ -23,9 +22,6 @@ export default defineNuxtConfig({
   icon: {
     serverBundle: {
       collections: ['mdi', 'mingcute']
-    },
-    clientBundle: {
-      scan: true
     }
   }
 });
