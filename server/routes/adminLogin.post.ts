@@ -9,17 +9,7 @@ export default defineEventHandler({
     const adminUser = process.env.ADMIN_USER!;
     const adminPass = process.env.ADMIN_PASS!;
 
-    if (username !== adminUser) {
-      return sendError(
-        event,
-        createError({
-          statusCode: 401,
-          statusMessage: 'Incorrect username or password.'
-        })
-      );
-    }
-
-    if (password !== adminPass) {
+    if (username !== adminUser || password !== adminPass) {
       return sendError(
         event,
         createError({
